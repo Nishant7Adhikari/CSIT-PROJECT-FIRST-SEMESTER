@@ -1,0 +1,7 @@
+# Nishant : 
+# created and styled the nav and the footer, with name and a menu button.
+#
+#
+#
+#
+#

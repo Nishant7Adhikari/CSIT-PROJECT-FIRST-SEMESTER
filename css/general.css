@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    max-width: 100vw;
+    background: #242424;
+    color: #eee;
+}   
+main{
+    min-height: 90vh;
+    max-width: 100vw;
+}

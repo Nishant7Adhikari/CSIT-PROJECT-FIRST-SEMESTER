@@ -1,0 +1,15 @@
+.top-bottom {
+    max-width: 100vw;
+    background-color: #141414;
+    padding: 5px 9px;
+    display: flex;
+    align-items: center;
+}
+
+.top-bottom button {
+    margin-left: auto;
+}
+
+.bottom {
+    justify-content: center;
+}
