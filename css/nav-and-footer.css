@@ -11,6 +11,31 @@
     margin-left: auto;
 }
 
+.nav-buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-link {
+    padding: 8px 15px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-link:hover {
+    background-color: #357abd;
+}
+
 .bottom {
     justify-content: center;
     color: #fff;
