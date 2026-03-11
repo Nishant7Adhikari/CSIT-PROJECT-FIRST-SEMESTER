@@ -1,110 +1,84 @@
-let editingId = null;
-
-function login() {
-    const u = document.getElementById('user').value;
-    const p = document.getElementById('pass').value;
-    if (u === 'admin' && p === 'admin123') {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
-        loadOpp();
-    } else alert('Invalid credentials!');
+if (!sessionStorage.getItem('adminLoggedIn')) {
+    window.location.href = 'login.html';
 }
 
-function logout() {
-    if (confirm('Logout?')) {
-        document.getElementById('login').style.display = 'flex';
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('user').value = '';
-        document.getElementById('pass').value = '';
+const form = document.getElementById('addForm');
+const itemsList = document.getElementById('itemsList');
+const addBtn = document.getElementById('addBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+const formSection = document.getElementById('formSection');
+const logoutBtn = document.getElementById('logoutBtn');
+
+const saved = localStorage.getItem('opportunities');
+if (saved) {
+    data = JSON.parse(saved);
+}
+
+addBtn.addEventListener('click', () => {
+    formSection.classList.toggle('hidden');
+});
+
+cancelBtn.addEventListener('click', () => {
+    formSection.classList.add('hidden');
+    form.reset();
+});
+
+logoutBtn.addEventListener('click', () => {
+    sessionStorage.removeItem('adminLoggedIn');
+    window.location.href = 'login.html';
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const newItem = {
+        id: Date.now().toString(),
+        title: document.getElementById('title').value,
+        category: document.getElementById('category').value,
+        organization: document.getElementById('organization').value,
+        description: document.getElementById('description').value,
+        deadline: document.getElementById('deadline').value,
+        location: document.getElementById('location').value,
+        time: '',
+        fee: document.getElementById('fee').value,
+        payment: document.getElementById('payment').value,
+        imagePath: '',
+        link: document.getElementById('link').value,
+    };
+
+    data.push(newItem);
+    localStorage.setItem('opportunities', JSON.stringify(data));
+    form.reset();
+    formSection.classList.add('hidden');
+    renderItems();
+});
+
+function renderItems() {
+    if (data.length === 0) {
+        itemsList.innerHTML = '<div class="empty-message">No items yet</div>';
+        return;
     }
-}
 
-function loadOpp() {
-    const search = document.getElementById('search').value.toLowerCase();
-    const cat = document.getElementById('cat').value;
-    const filtered = data.filter(item => 
-        item.title !== '' && 
-        (item.title.toLowerCase().includes(search) || item.org.includes(search)) &&
-        (!cat || item.category === cat)
-    );
-    
-    document.getElementById('list').innerHTML = filtered.map(item => `
-        <div class="card">
+    itemsList.innerHTML = data.map(item => `
+        <div class="item-card">
             <h3>${item.title}</h3>
-            <p><b>${item.category}</b> | ${item.organization}</p>
-            <p>${item.description.substring(0, 80)}...</p>
-            <p> ${item.location} | 📅 ${item.deadline}</p>
-            <div class="card-actions">
-                <button class="edit-btn" onclick="editOpp('${item.id}')">Edit</button>
-                <button class="delete-btn" onclick="delOpp('${item.id}')">Delete</button>
+            <div class="item-info"><strong>Category:</strong> ${item.category}</div>
+            <div class="item-info"><strong>Organization:</strong> ${item.organization}</div>
+            <div class="item-info"><strong>Deadline:</strong> ${item.deadline}</div>
+            <div class="item-info"><strong>Location:</strong> ${item.location}</div>
+            <div class="item-actions">
+                <button class="delete-btn" onclick="deleteItem('${item.id}')">Delete</button>
             </div>
         </div>
     `).join('');
 }
 
-function editOpp(id) {
-    const item = data.find(i => i.id === id);
-    if (!item) return;
-    editingId = id;
-    document.getElementById('title').value = item.title;
-    document.getElementById('category').value = item.category;
-    document.getElementById('org').value = item.organization;
-    document.getElementById('description').value = item.description;
-    document.getElementById('deadline').value = item.deadline;
-    document.getElementById('location').value = item.location;
-    document.getElementById('fee').value = item.fee;
-    document.getElementById('payment').value = item.payment;
-    document.getElementById('modal').classList.add('show');
-}
-
-function openForm() {
-    editingId = null;
-    document.getElementById('modal').classList.add('show');
-    formReset();
-}
-
-function closeForm() {
-    document.getElementById('modal').classList.remove('show');
-    formReset();
-}
-
-function formReset() {
-    document.querySelectorAll('input[type="text"], select, textarea').forEach(el => el.value = '');
-    document.getElementById('modalTitle').textContent = 'Add Opportunity';
-}
-
-function save() {
-    const form = {
-        title: document.getElementById('title').value,
-        category: document.getElementById('category').value,
-        organization: document.getElementById('org').value,
-        description: document.getElementById('description').value,
-        deadline: document.getElementById('deadline').value,
-        location: document.getElementById('location').value,
-        fee: document.getElementById('fee').value,
-        payment: document.getElementById('payment').value,
-        time: '',
-        imagePath: '',
-        link: ''
-    };
-    
-    if (editingId) {
-        const idx = data.findIndex(i => i.id === editingId);
-        if (idx !== -1) data[idx] = { ...data[idx], ...form };
-    } else {
-        data.push({ id: 'id_' + Date.now(), ...form });
-    }
-    
-    saveDataToLocalStorage();
-    closeForm();
-    loadOpp();
-    alert('Saved!');
-}
-
-function delOpp(id) {
-    if (confirm('Delete?')) {
-        data = data.filter(i => i.id !== id);
-        saveDataToLocalStorage();
-        loadOpp();
+function deleteItem(id) {
+    if (confirm('Delete this item?')) {
+        data = data.filter(item => item.id !== id);
+        localStorage.setItem('opportunities', JSON.stringify(data));
+        renderItems();
     }
 }
+
+renderItems();

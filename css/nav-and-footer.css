@@ -7,10 +7,6 @@
     align-items: center;
 }
 
-.top-bottom button {
-    margin-left: auto;
-}
-
 .nav-buttons {
     margin-left: auto;
     display: flex;
@@ -19,26 +15,21 @@
 }
 
 .admin-link {
-    padding: 8px 15px;
-    background-color: #4a90e2;
-    color: white;
+    color: #aaa;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
 .admin-link:hover {
-    background-color: #357abd;
+    color: #0ea5e9;
+}
+
+.top-bottom button {
+    margin-left: auto;
 }
 
 .bottom {
     justify-content: center;
     color: #fff;
-    /* position: relative;
-    bottom: 0; */
 }

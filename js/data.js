@@ -1,17 +1,17 @@
-let defaultData = [
+let data = [
     {
-        id: '', 
-        title: "", 
-        category: "", 
-        organization: "", 
-        description: "", 
-        deadline: "",
-        location: "", 
-        time: "", 
-        fee: "",
-        payment: "",
-        imagePath: '',
-        link: '',
+        id: '', // auto genterated
+        title: "", // Event title
+        category: "", // Event // Scholarship // Internship
+        organization: "", // organization / organizor
+        description: "", // description of the event
+        deadline: "", // last date to apply/register
+        location: "", // location of the targeted event 
+        time: "", // when will the event starts/happens 
+        fee: "", // entry/regestraion fee
+        payment: "", // salary / will you receive any money from the organization?
+        imagePath: '', // image linl or path > currently unused
+        link: '', // website or event related link
     },
     {
         id: '',
@@ -209,20 +209,4 @@ let defaultData = [
         imagePath: '',
         link: '',
     }
-];
-
-// Load data from localStorage if available, otherwise use default data
-let data = JSON.parse(localStorage.getItem('opportunityData')) || defaultData;
-
-function saveDataToLocalStorage() {
-    localStorage.setItem('opportunityData', JSON.stringify(data));
-}
-
-function initializeIds() {
-    data.forEach((item, index) => {
-        if (!item.id || item.id === '') {
-            item.id = 'id_' + Date.now() + '_' + index;
-        }
-    });
-    saveDataToLocalStorage();
-}
+]
