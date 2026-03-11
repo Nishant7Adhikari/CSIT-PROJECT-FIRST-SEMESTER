@@ -7,11 +7,14 @@ function inject(filter) {
 
     data2.forEach(itm => {
         if (filter !== "filter") {
-            if (filter != "all")
+            if (filter !== "all")
                 if (filter !== itm.category) return
         }
 
+        console.log(filter)
+
         if (itm.title === '') return;
+
         let icon = "hand-pointer"
         let paymentClass = "freePayment"
         let action = "Apply";
@@ -26,6 +29,9 @@ function inject(filter) {
             actionSudo = "by: "
             icon = "pencil"
         }
+
+        console.log(icon)
+        console.log(itm.category)
 
         let div = document.createElement("div");
         div.innerHTML = `

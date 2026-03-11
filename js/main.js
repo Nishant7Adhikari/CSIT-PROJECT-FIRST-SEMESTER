@@ -6,5 +6,6 @@ filter.addEventListener("click", (e) =>{
     if(!trgt)
         parm = ""
     container.innerHTML = '';
+    console.log(trgt.id, " dsjfkjh ", parm)
     inject(parm);
 })
