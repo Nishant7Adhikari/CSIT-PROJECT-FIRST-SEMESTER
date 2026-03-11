@@ -7,6 +7,24 @@
     align-items: center;
 }
 
+.nav-buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-link {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.admin-link:hover {
+    color: #0ea5e9;
+}
+
 .top-bottom button {
     margin-left: auto;
 }
@@ -14,6 +32,4 @@
 .bottom {
     justify-content: center;
     color: #fff;
-    /* position: relative;
-    bottom: 0; */
 }

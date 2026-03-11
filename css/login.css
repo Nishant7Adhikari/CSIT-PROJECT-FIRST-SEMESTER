@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-box h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #141414;
+    text-align: center;
+}
+
+.login-box h1 span {
+    font-size: 16px;
+    color: #64748b;
+    display: block;
+    font-weight: normal;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+#loginForm input {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+#loginForm input:focus {
+    outline: none;
+    border-color: #0ea5e9;
+}
+
+#loginForm button {
+    padding: 12px;
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#loginForm button:hover {
+    background: #0284c7;
+}
+
+.error {
+    color: #dc2626;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+}
+
+.error.show {
+    display: block;
+}

@@ -1,6 +1,11 @@
 let container = document.querySelector(".container");
 let base = "all"
 
+const saved = localStorage.getItem('opportunities');
+if (saved) {
+    data = JSON.parse(saved);
+}
+
 function inject(filter) {
 
     let data2 = data.slice().sort((a, b) => (a.deadline || "").localeCompare(b.deadline || ""));

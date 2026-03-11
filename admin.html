@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Opportu NEST</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="admin-nav">
+        <h1>Opportu NEST</h1>
+        <div class="nav-right">
+            <button id="logoutBtn" class="logout-btn"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
+            <a href="index.html" class="back-link">Back</a>
+        </div>
+    </nav>
+
+    <main class="admin-container">
+        <div class="admin-header">
+            <h2>Manage Opportunities</h2>
+            <button id="addBtn" class="add-btn"><i class="fa-solid fa-plus"></i> Add New</button>
+        </div>
+
+        <section id="formSection" class="form-section hidden">
+            <form id="addForm">
+                <input type="text" id="title" placeholder="Title" required>
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Scholarship">Scholarship</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Event">Event</option>
+                </select>
+                <input type="text" id="organization" placeholder="Organization" required>
+                <textarea id="description" placeholder="Description" required></textarea>
+                <input type="text" id="deadline" placeholder="Deadline (YYYY/MM/DD)" required>
+                <input type="text" id="location" placeholder="Location" required>
+                <input type="text" id="fee" placeholder="Fee">
+                <input type="text" id="payment" placeholder="Payment/Salary">
+                <input type="text" id="link" placeholder="Link">
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Add Item</button>
+                    <button type="button" id="cancelBtn" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="itemsList" class="items-list"></div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
