@@ -43,7 +43,7 @@ function inject(filter) {
             <h3 class="card-title">${itm.title}</h3>
             <div class="card-meta">
                 <div class="meta-item ${paymentClass}">
-                    <span">${itm.payment || itm.fee}</span>
+                    <span>${itm.payment || itm.fee}</span>
                 </div>
                 <div class="meta-item location">
                     
@@ -58,7 +58,7 @@ function inject(filter) {
             <p class="card-description">${itm.description}</p>
             <div class="card-footer">
                 <span class="deadline">${actionSudo}${itm.deadline}</span>
-            <button class="apply-btn">
+            <button class="apply-btn" data-category="${itm.category}" data-title="${itm.title.replace(/"/g, '&quot;')}">
             <i class="fa-solid fa-${icon}"></i>
             ${action}
             </button>

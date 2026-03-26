@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/nav-and-footer.css">
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/filter.css">
+    <link rel="stylesheet" href="css/modal.css"> 
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         <!-- styled using filter.css -->
         <section id="filter" class="filter">
             <span id="all">All</span>
-            <span id="Scholarship">Schollarship</span>
+            <span id="Scholarship">Scholarship</span>
             <span id="Internship">Internship</span>
             <span id="Event">Events</span>
         </section>
@@ -36,6 +37,72 @@
 
         </section>
     </main>
+    <!-- Modals -->
+    <div id="apply-modal-wrapper" class="modal-wrapper">
+        <div class="modal-content">
+            <span class="close-btn" data-modal="apply-modal-wrapper"><i class="fa-solid fa-xmark"></i></span>
+            <h2 id="apply-modal-title">Apply for Internship/Scholarship</h2>
+            <form id="apply-form">
+                <input type="hidden" id="apply-item-title">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="e.g. john@example.com" required>
+                </div>
+                <div class="grid-inputs">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+977..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Highest Education</label>
+                        <input type="text" placeholder="e.g. Bachelor's in CSIT" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Motivation Statement</label>
+                    <textarea placeholder="Tell us why you deserve this opportunity..." required></textarea>
+                </div>
+                <button type="submit" class="we-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="register-modal-wrapper" class="modal-wrapper">
+        <div class="modal-content">
+            <span class="close-btn" data-modal="register-modal-wrapper"><i class="fa-solid fa-xmark"></i></span>
+            <h2 id="register-modal-title">Register for Event</h2>
+            <form id="register-form">
+                <input type="hidden" id="register-item-title">
+                <div class="form-group">
+                    <label>Delegate Name</label>
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Email</label>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label>Organization / Institution</label>
+                    <input type="text" placeholder="University or Company Name" required>
+                </div>
+                <div class="form-group">
+                    <label>How did you hear about us?</label>
+                    <select required>
+                        <option value="">Select an option</option>
+                        <option value="social">Social Media</option>
+                        <option value="friend">Friend/Colleague</option>
+                        <option value="campus">Campus Ambassador</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="we-button">Confirm Registration</button>
+            </form>
+        </div>
+    </div>
     <!-- styled using nav-and-footer.css -->
     <footer class="top-bottom bottom">
         <div>© 2026 Opportu NEST Licensed under MIT License</div>
